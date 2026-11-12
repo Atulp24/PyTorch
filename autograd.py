@@ -89,3 +89,33 @@
 
 # # Compute the gradients
 # z.backward() # This will raise a RuntimeError because the tensors do not require gradients, and thus do not have a grad_fn.
+
+# Backpropagation in Neural Networks
+
+# We have understood the mathematical intuition behind and how torch.autograd takes care of automatic differentiation with an example.
+
+# Then,
+
+# The loss is calculate between prediction and target using loss(predcition,target)
+# Then backpropagation is performed using loss.backward()
+# We update the new weights using optimizer.step()
+
+# The Weight Update Formula is:
+
+# wnew=w−η∇L(w)
+
+# The gradient of L is a vector of partial derivatives:
+
+# ∇L=(∂L∂w1,∂L∂w2,…,∂L∂wn)
+
+# Current Weights (w): These are the weights of the model before the update.
+# Learning Rate (η): A hyperparameter that controls the step size of the weight update. A smaller learning rate makes the training process slower but more precise, while a larger learning rate makes the training process faster but it may sometimes overshoot the optimal solution.
+# Gradient of the Loss (∇L(w)): The partial derivatives of the loss function with respect to each weight. This indicates the direction and magnitude of the steepest ascent in the loss function.
+# Updated Weights (wnew): The new weights after applying the gradient descent step.
+# After applying the updates, it's crucial to zero out the gradients. This is typically done using: optimizer.zero_grad()
+
+# Interesting, right? This is how the model learns. During training, the model iteratively adjusts its weights and biases to minimize the loss function, which measures the difference between the predicted outputs and the actual targets.
+
+# This process of forward pass, gradient computation, backward pass, and parameter update is repeated for many iterations (epochs) over the entire dataset. With each iteration, the model's parameters are refined, gradually reducing the loss and improving the model's performance.
+
+# In our upcoming notebooks we will understand all these concepts with hands on training.
